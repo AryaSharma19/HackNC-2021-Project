@@ -205,16 +205,15 @@ def pesticide() -> None:
 
 def weather() -> None:
     """weather"""
+    global moisture
     global soil
     soil = randint(1,4) #1-rainy 2-perfect 3-sunny 4-lightning
     if soil == 1:
-        global moisture
         moisture -= 1
         print("The weather is extremely rainy! Your crops are getting flooded.")
     elif soil == 2:
         print("The weather is absolutely perfect! Your crops are thriving.")
     elif soil == 3: 
-        global moisture
         moisture -= 1
         print("The weather is extremely sunny! Your crops are getting dry.")
     elif soil == 4:
