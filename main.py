@@ -84,6 +84,7 @@ def tillage() -> None:
 
 def soil_type() -> None: 
     """Determines soil type for the game."""
+    print("")
     print("Good farmers pay attention to their soil type.")
     global soiltype
     soiltype = randint(1,3)
@@ -97,6 +98,7 @@ def soil_type() -> None:
 
 def allocating() -> None:
     """allocating"""
+    print("")
     print(f"Out of your total acerage ({farmsize}), how many acres do you want to allocate to:")
     global ssize 
     check: bool = False
@@ -140,6 +142,7 @@ def allocating() -> None:
 def seeding() -> None:
     """seeding"""
     global density
+    print("")
     print("Crop density is an important farming concept that measures how many plants are planted per square acre")
     print("According to survey by MSU, the optimum crop density can range from 72,000 planter per square acre to 120,000 plants per square acre, depending on the type of plant")
     d: int = int(input("On a scale of 1-4 with 1 being the most dense and 4 being the least dense, how dense do you want your crops to be planted: "))
@@ -155,6 +158,7 @@ def seeding() -> None:
 def watering1() -> None:
     """watering1"""
     global moisture
+    print("")
     w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
     check: bool = False
     while check == False:
@@ -172,6 +176,7 @@ def fertilizer() -> None:
     global balance
     global farmsize
     fprice: float = 112.0
+    print("")
     print("The crops have sprouted and are leafing out. If more nutrients are needed to improve yield it would be a good time add fertilizer. Fertilizer is $112 per acre.")
     fertilizer = int(input("Would you like to fertilize the soil? (Choose a whole number between 0-2): "))
     if fertilizer == 2:
@@ -192,6 +197,7 @@ def fertilizer() -> None:
 def watering2() -> None:
     """watering2"""
     global moisture
+    print("")
     w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
     check: bool = False
     while check == False:
@@ -208,6 +214,7 @@ def pesticide() -> None:
     global balance
     global pesttreatment
     pestprice: float = 73.0
+    print("")
     print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is $73 per acre.")
     pesttreatment = bool(input("Do you get a pesticide treatment your fields?(true or false)"))
     if pesttreatment:
@@ -218,6 +225,7 @@ def weather() -> None:
     """weather"""
     global moisture
     global soil
+    print("")
     soil = randint(1,4) #1-rainy 2-perfect 3-sunny 4-lightning
     if soil == 1:
         moisture -= 1
@@ -235,6 +243,7 @@ def weather() -> None:
 def watering3() -> None:
     """watering3"""
     global moisture
+    print("")
     w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
     check: bool = False
     while check == False:
@@ -250,6 +259,7 @@ def harvest() -> None:
     global moisture
     global density
     global pesttreatment
+    print("")
     normal_yield: float = float((ssize*30)+(psize*3000)+(csize*825)+(crsize*65000))
     yield_changes: float = float(soiltype + moisture + density)
     yield_percent: float = 0.0
@@ -269,9 +279,8 @@ def harvest() -> None:
 
     total_profit: float = (total_yield * 3.2) + balance
     print(f"Your total profit at the farmer's market was ${total_profit}")
-
+    print(f"Thank you farmer {player} for playing AgriLife! We hope to see you soon!")
         
-
 
 
 
