@@ -44,7 +44,7 @@ ssize: float = 0.0
 psize: float = 0.0
 csize: float = 0.0
 crsize: float = 0.0
-soil: int = 0
+soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
 
@@ -60,8 +60,9 @@ def greet() -> None:
     global player 
     player = str(input("Player name: ")) 
     print(f"Welcome {player}!") 
-    print("*description needed*")
-    print(f"Your current balance is: {balance}")
+    print("This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer!")
+    print("Your goal is to maximize yield and profit for the end-of-year farmer's market.")
+    print(f"Depending on your decisions, your profit will change. Your initial balance to use on supplies and tools is ${balance}")
 
 def tillage() -> None:
     """how many acres"""
@@ -69,11 +70,17 @@ def tillage() -> None:
     print("*description needed*")
     farmsize = int(input("How large do you want your farm to be? (Enter a whole number): "))
 
-def soiltype() -> None: 
-    global soil
-    soil: int = randint(1,4)
-
-    print("You have the soil type ")
+def soil_type() -> None: 
+    """Determines soil type for the game."""
+    print("Good farmers pay attention to their soil type.")
+    global soiltype
+    soiltype = randint(1,3)
+    if soiltype == 1:
+        print("You have fresh, brand new soil.")
+    elif soiltype == 2:
+        print("Your soil was used last season to cultivate other crops.")
+    else:
+        print("Oh no, your soil is extremely unhealthy!")
 
 
 def allocating() -> None:
@@ -102,8 +109,6 @@ def pesticide() -> None:
 
 def weather() -> None:
     """weather"""
-    global soil
-    soil: int = randint(1,4)
 
 def watering3() -> None:
     """watering3"""
@@ -114,3 +119,4 @@ def harvest() -> None:
 
 if __name__ == "__main__":
     main()
+
