@@ -72,7 +72,7 @@ def greet() -> None:
     print(f"Welcome {player}") 
     print("")
     print(f"This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer!")
-    print("Your goal is to maximize yield and profit for the end-of-year farmer's market.")
+    print("Your goal is to maximize yield and profit for the end-of-year farmer's market. You will grow soybeans, peanuts, cotton, and corn.")
     print(f"Depending on your decisions, your profit will change.")
 
 def tillage() -> None:
