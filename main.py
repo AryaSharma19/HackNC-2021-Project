@@ -36,9 +36,7 @@
 from random import randint
 
 player: str = ""
-totalprof: float = 0.0
-totalyield: float = 0.0
-balance: float = 25000.0
+balance: float = 0.0
 farmsize: int = 0
 ssize: float = 0.0
 psize: float = 0.0
@@ -48,13 +46,23 @@ soil: int = 0
 soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
-pesttreament: bool = False
+pesttreatment: bool = False
 density: int = 0 #int 1 - 4 (best - worst)
 
 def main() -> None:
     """Entrypoint into the program"""
     greet()                                                           
-    tillage()                                                            
+    tillage()
+    soil_type()
+    allocating()
+    seeding()
+    watering1()
+    fertilizer()
+    watering2()
+    pesticide()
+    weather()
+    watering3()                                                            
+    harvest()
     
 
 def greet() -> None:
@@ -65,7 +73,7 @@ def greet() -> None:
     print("")
     print(f"This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer!")
     print("Your goal is to maximize yield and profit for the end-of-year farmer's market.")
-    print(f"Depending on your decisions, your profit will change. Your initial balance to use on supplies and tools is ${balance}")
+    print(f"Depending on your decisions, your profit will change.")
 
 def tillage() -> None:
     """how many acres"""
@@ -237,6 +245,33 @@ def watering3() -> None:
 
 def harvest() -> None:
     """harvest"""
+    global soil_type
+    global moisture
+    global density
+    global pesttreatment
+    normal_yield: float = float((ssize*30)+(psize*3000)+(csize*825)+(crsize*65000))
+    yield_changes: float = float(soiltype + moisture + density)
+    yield_percent: float = 0.0
+   
+    if yield_changes <= 11 and yield_changes >= 9:
+        yield_percent = 0.3
+    elif yield_changes <=8 and yield_changes >= 6:
+        yield_percent = 0.5
+    else:
+        yield_percent = 0.7
+   
+    if pesttreatment:
+        yield_percent += 0.3
+    
+    total_yield: float = normal_yield * yield_percent
+    print(f"You produced {total_yield} pounds of crops.")
+
+    total_profit: float = (total_yield * 3.2) + balance
+    print(f"Your total profit at the farmer's market was ${total_profit}")
+
+        
+
+
 
 
 if __name__ == "__main__":
