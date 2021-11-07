@@ -44,6 +44,7 @@ ssize: float = 0.0
 psize: float = 0.0
 csize: float = 0.0
 crsize: float = 0.0
+soil: int = 0
 soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
@@ -109,6 +110,8 @@ def pesticide() -> None:
 
 def weather() -> None:
     """weather"""
+    global soil
+    soil = randint(1,4)
 
 def watering3() -> None:
     """watering3"""
