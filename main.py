@@ -144,6 +144,26 @@ def watering1() -> None:
 
 
 def fertilizer() -> None:
+#fertilizer should have a positive effect the soil variable.  
+#fertilizer should have a negative effect on balance. needs a price
+    global soil
+    global balance
+    fprice: float = 0.0
+    print("The crops have sprouted and are leafing out. If more nutrients are needed to improve yield it would be a good time add fertilizer. Fertilizer is *cost needed* per unit.")
+    fertilizer = int(input("Would you like to fertilize the soil? (Choose a whole number between 0-2): "))
+    if fertilizer == 2:
+        balance -= 2*fprice
+        if soil < 2:
+            soil += 2
+        else:
+            soil = 3
+    if fertilizer == 1:
+        balance -= fprice
+        if soil < 3:
+            soil += 1
+        else:
+            soil = 3
+    
     """fertilizer"""
 
 def watering2() -> None:
@@ -159,6 +179,15 @@ def watering2() -> None:
             w = int(input("Please enter a number between 1-4: "))
 
 def pesticide() -> None:
+#pesticide should increase yield
+#pesticide should reduce balance
+#may need a global boolean variable for a multiplier on yield during harvest.
+    global balance
+    pestprice: float = 0.0
+    print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is *cost needed*.")
+    pesttreatment = bool(input("Do you get a pesticide treatment your fields?"))
+    if pesttreatment:
+        balance -= pestprice
     """pesticide"""
 
 def weather() -> None:
