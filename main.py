@@ -48,7 +48,7 @@ soil: int = 0
 soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
-density: int = 0 #int 1 - 4 (best - worst)
+pesttreament: bool = False
 
 
 def main() -> None:
@@ -194,9 +194,10 @@ def pesticide() -> None:
 #pesticide should reduce balance
 #may need a global boolean variable for a multiplier on yield during harvest.
     global balance
+    global pesttreament
     pestprice: float = 0.0
     print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is *cost needed*.")
-    pesttreatment = bool(input("Do you get a pesticide treatment your fields?"))
+    pesttreatment = bool(input("Do you get a pesticide treatment your fields?(true or false)"))
     if pesttreatment:
         balance -= pestprice
     """pesticide"""
@@ -204,7 +205,21 @@ def pesticide() -> None:
 def weather() -> None:
     """weather"""
     global soil
-    soil = randint(1,4)
+    soil = randint(1,4) #1-rainy 2-perfect 3-sunny 4-lightning
+    if soil == 1:
+        global moisture
+        moisture -= 1
+        print("The weather is extremely rainy! Your crops are getting flooded.")
+    elif soil == 2:
+        print("The weather is absolutely perfect! Your crops are thriving.")
+    elif soil == 3: 
+        global moisture
+        moisture -= 1
+        print("The weather is extremely sunny! Your crops are getting dry.")
+    elif soil == 4:
+        print("The weather is extremely stormy!")
+        print("...Oh no! All your crops got destroyed by lightning.")
+        main()
 
 def watering3() -> None:
     """watering3"""
