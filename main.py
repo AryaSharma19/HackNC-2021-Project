@@ -158,23 +158,24 @@ def watering1() -> None:
 def fertilizer() -> None:
 #fertilizer should have a positive effect the soil variable.  
 #fertilizer should have a negative effect on balance. needs a price
-    global soil
+    global soiltype
     global balance
-    fprice: float = 0.0
-    print("The crops have sprouted and are leafing out. If more nutrients are needed to improve yield it would be a good time add fertilizer. Fertilizer is *cost needed* per unit.")
+    global farmsize
+    fprice: float = 112.0
+    print("The crops have sprouted and are leafing out. If more nutrients are needed to improve yield it would be a good time add fertilizer. Fertilizer is $112 per acre.")
     fertilizer = int(input("Would you like to fertilize the soil? (Choose a whole number between 0-2): "))
     if fertilizer == 2:
-        balance -= 2*fprice
-        if soil < 2:
-            soil += 2
+        balance -= 2*fprice*farmsize
+        if soiltype > 2:
+            soiltype -= 2
         else:
-            soil = 3
+            soiltype = 1
     if fertilizer == 1:
-        balance -= fprice
-        if soil < 3:
-            soil += 1
+        balance -= fprice*farmsize
+        if soiltype > 1:
+            soiltype -= 1
         else:
-            soil = 3
+            soiltype = 1
     
     """fertilizer"""
 
@@ -195,9 +196,9 @@ def pesticide() -> None:
 #pesticide should reduce balance
 #may need a global boolean variable for a multiplier on yield during harvest.
     global balance
-    global pesttreament
-    pestprice: float = 0.0
-    print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is *cost needed*.")
+    global pesttreatment
+    pestprice: float = 73.0
+    print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is $73 per acre.")
     pesttreatment = bool(input("Do you get a pesticide treatment your fields?(true or false)"))
     if pesttreatment:
         balance -= pestprice
