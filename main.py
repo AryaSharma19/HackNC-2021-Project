@@ -48,6 +48,7 @@ soil: int = 0
 soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
+pesttreament: bool = False
 
 
 def main() -> None:
@@ -183,9 +184,10 @@ def pesticide() -> None:
 #pesticide should reduce balance
 #may need a global boolean variable for a multiplier on yield during harvest.
     global balance
+    global pesttreament
     pestprice: float = 0.0
     print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is *cost needed*.")
-    pesttreatment = bool(input("Do you get a pesticide treatment your fields?"))
+    pesttreatment = bool(input("Do you get a pesticide treatment your fields?(true or false)"))
     if pesttreatment:
         balance -= pestprice
     """pesticide"""
