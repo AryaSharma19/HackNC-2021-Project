@@ -139,7 +139,8 @@ def seeding() -> None:
             density = d
             check = True
         else:
-            w = int(input("Please enter a number between 1-4: "))
+            d = int(input("Please enter a number between 1-4: "))
+
 
 def watering1() -> None:
     """watering1"""
