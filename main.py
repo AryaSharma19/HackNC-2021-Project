@@ -48,12 +48,13 @@ soil: int = 0
 soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
+pesttreament: bool = False
 
 
 def main() -> None:
     """Entrypoint into the program"""
-    greet()
-    tillage()
+    greet()                                                           
+    tillage()                                                            
     
 
 def greet() -> None:
@@ -68,7 +69,7 @@ def greet() -> None:
 def tillage() -> None:
     """how many acres"""
     global farmsize
-    print("*description needed*")
+    print(f"*description needed*")
     farmsize = int(input("How large do you want your farm to be? (Enter a whole number): "))
 
 def soil_type() -> None: 
@@ -86,10 +87,44 @@ def soil_type() -> None:
 
 def allocating() -> None:
     """allocating"""
-    global ssize
+    print(f"Out of your total acerage ({farmsize}), how many acres do you want to allocate to:")
+    global ssize 
+    check: bool = False
+    while check == False:
+        a: float = float(input("Soybeans? (Enter a whole number)"))
+        if farmsize >= a:
+            ssize = a
+            check = True
+        else:
+            print("Please enter a number that does not exceed your total farm acerage.")
+    check = False
     global psize
-    global csize
+    while check == False:
+        b: float = float(input("Peanuts? (Enter a whole number)"))
+        if farmsize >= b + ssize:
+            psize = b
+            check = True
+        else:
+            print("Please enter a number that does not exceed your total farm acerage.")
+    check = False
+    global csize 
+    while check == False:
+        c: float = float(input("Cotton? (Enter a whole number)"))
+        if farmsize >= ssize + psize + c:
+            csize = c
+            check = True
+        else:
+            print("Please enter a number that does not exceed your total farm acerage.")
+    check = False 
     global crsize
+    while check == False:
+        d: float = float(input("Corn? (Enter a whole number)"))
+        if farmsize == ssize + psize + csize + d:
+            crsize = d
+            check = True
+        else:
+            print("Please enter a number that meets but does not exceed your total farm acerage.")
+
     
 
 def seeding() -> None:
@@ -98,14 +133,63 @@ def seeding() -> None:
 
 def watering1() -> None:
     """watering1"""
+    global moisture
+    w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
+    check: bool = False
+    while check == False:
+        if 1<=w<=4:
+            moisture = w
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
+
 
 def fertilizer() -> None:
+#fertilizer should have a positive effect the soil variable.  
+#fertilizer should have a negative effect on balance. needs a price
+    global soil
+    global balance
+    fprice: float = 0.0
+    print("The crops have sprouted and are leafing out. If more nutrients are needed to improve yield it would be a good time add fertilizer. Fertilizer is *cost needed* per unit.")
+    fertilizer = int(input("Would you like to fertilize the soil? (Choose a whole number between 0-2): "))
+    if fertilizer == 2:
+        balance -= 2*fprice
+        if soil < 2:
+            soil += 2
+        else:
+            soil = 3
+    if fertilizer == 1:
+        balance -= fprice
+        if soil < 3:
+            soil += 1
+        else:
+            soil = 3
+    
     """fertilizer"""
 
 def watering2() -> None:
     """watering2"""
+    global moisture
+    w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
+    check: bool = False
+    while check == False:
+        if 1<=w<=4:
+            moisture = w
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
 
 def pesticide() -> None:
+#pesticide should increase yield
+#pesticide should reduce balance
+#may need a global boolean variable for a multiplier on yield during harvest.
+    global balance
+    global pesttreament
+    pestprice: float = 0.0
+    print("When scouting the crops you notice some evidence of damage from insects.  Pesticide treatment could reduce the damage and increase your yield. Pesticide treatment is *cost needed*.")
+    pesttreatment = bool(input("Do you get a pesticide treatment your fields?(true or false)"))
+    if pesttreatment:
+        balance -= pestprice
     """pesticide"""
 
 def weather() -> None:
@@ -129,6 +213,15 @@ def weather() -> None:
 
 def watering3() -> None:
     """watering3"""
+    global moisture
+    w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
+    check: bool = False
+    while check == False:
+        if 1<=w<=4:
+            moisture = w
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
 
 def harvest() -> None:
     """harvest"""
