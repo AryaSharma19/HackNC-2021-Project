@@ -49,7 +49,7 @@ soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
 pesttreament: bool = False
-
+density: int = 0 #int 1 - 4 (best - worst)
 
 def main() -> None:
     """Entrypoint into the program"""
