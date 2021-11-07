@@ -69,7 +69,7 @@ def greet() -> None:
     """Intro to the game"""
     global player 
     player = str(input("Player name: ")) 
-    print(f"Welcome {player}!") 
+    print(f"Welcome {player}") 
     print("")
     print(f"This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer!")
     print("Your goal is to maximize yield and profit for the end-of-year farmer's market.")
