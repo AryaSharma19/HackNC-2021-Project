@@ -48,6 +48,7 @@ soil: int = 0
 soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
+density: int = 0 #int 1 - 4 (best - worst)
 
 
 def main() -> None:
@@ -128,7 +129,17 @@ def allocating() -> None:
 
 def seeding() -> None:
     """seeding"""
-    print()
+    global density
+    print("Crop density is an important farming concept that measures how many plants are planted per square acre")
+    print("According to survey by MSU, the optimum crop density can range from 72,000 planter per square acre to 120,000 plants per square acre, depending on the type of plant")
+    d: int = int(input("On a scale of 1-4 with 1 being the most dense and 4 being the least dense, how dense do you want your crops to be planted: "))
+    check: bool = False
+    while check == False:
+        if 1<=d<=4:
+            density = d
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
 
 def watering1() -> None:
     """watering1"""
