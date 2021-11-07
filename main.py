@@ -62,6 +62,7 @@ def greet() -> None:
     global player 
     player = str(input("Player name: ")) 
     print(f"Welcome {player}!") 
+    print("")
     print(f"This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer!")
     print("Your goal is to maximize yield and profit for the end-of-year farmer's market.")
     print(f"Depending on your decisions, your profit will change. Your initial balance to use on supplies and tools is ${balance}")
@@ -69,6 +70,7 @@ def greet() -> None:
 def tillage() -> None:
     """how many acres"""
     global farmsize
+    print("")
     print(f"Tilling helps provide a proper enviroment for seed germination and root growth.")
     farmsize = int(input("How many acres of land do you want to till? (Enter a whole number): "))
 
