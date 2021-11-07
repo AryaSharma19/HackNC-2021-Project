@@ -51,8 +51,9 @@ moisture: int = 0 #int 1 - 4 (best - worst)
 
 def main() -> None:
     """Entrypoint into the program"""
-    greet()
-    tillage()
+    #greet()                                                            ARYA
+    #tillage()                                                             ARYA
+    allocating()
     
 
 def greet() -> None:
@@ -66,22 +67,56 @@ def greet() -> None:
 def tillage() -> None:
     """how many acres"""
     global farmsize
-    print("*description needed*")
+    print(f"*description needed*")
     farmsize = int(input("How large do you want your farm to be? (Enter a whole number): "))
 
 def soiltype() -> None: 
-    global soil
-    soil: int = randint(1,4)
+    #global soil                                                    ARYA
+    #soil: int = randint(1,4)                                       ARYA
 
     print("You have the soil type ")
 
 
 def allocating() -> None:
     """allocating"""
-    global ssize
+    print(f"Out of your total acerage ({farmsize}), how many acres do you want to allocate to:")
+    global ssize 
+    check: bool = False
+    while check == False:
+        a: float = float(input("Soybeans? (Enter a whole number)"))
+        if farmsize >= a:
+            ssize = a
+            check = True
+        else:
+            print("Please enter a number that does not exceed your total farm acerage.")
+    check = False
     global psize
-    global csize
+    while check == False:
+        b: float = float(input("Peanuts? (Enter a whole number)"))
+        if farmsize >= b + ssize:
+            psize = b
+            check = True
+        else:
+            print("Please enter a number that does not exceed your total farm acerage.")
+    check = False
+    global csize 
+    while check == False:
+        c: float = float(input("Cotton? (Enter a whole number)"))
+        if farmsize >= ssize + psize + c:
+            csize = c
+            check = True
+        else:
+            print("Please enter a number that does not exceed your total farm acerage.")
+    check = False 
     global crsize
+    while check == False:
+        d: float = float(input("Corn? (Enter a whole number)"))
+        if farmsize == ssize + psize + csize + d:
+            crsize = d
+            check = True
+        else:
+            print("Please enter a number that meets but does not exceed your total farm acerage.")
+
     
 
 def seeding() -> None:
@@ -90,23 +125,51 @@ def seeding() -> None:
 
 def watering1() -> None:
     """watering1"""
+    global moisture
+    w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
+    check: bool = False
+    while check == False:
+        if 1<=w<=4:
+            moisture = w
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
+
 
 def fertilizer() -> None:
     """fertilizer"""
 
 def watering2() -> None:
     """watering2"""
+    global moisture
+    w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
+    check: bool = False
+    while check == False:
+        if 1<=w<=4:
+            moisture = w
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
 
 def pesticide() -> None:
     """pesticide"""
 
 def weather() -> None:
     """weather"""
-    global soil
-    soil: int = randint(1,4)
+    #global soil                                                        ARYA
+    #soil: int = randint(1,4)                                           ARYA
 
 def watering3() -> None:
     """watering3"""
+    global moisture
+    w: int = int(input("On a scale of 1-4 with 1 being the most and 4 being the least, how much water do you want to add: "))
+    check: bool = False
+    while check == False:
+        if 1<=w<=4:
+            moisture = w
+            check = True
+        else:
+            w = int(input("Please enter a number between 1-4: "))
 
 def harvest() -> None:
     """harvest"""
