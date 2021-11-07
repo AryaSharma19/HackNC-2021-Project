@@ -49,7 +49,7 @@ soiltype: int = 0 #1-brand new soil; 2-used soil; 3- extremely unhealthy
 weather: int = 0
 moisture: int = 0 #int 1 - 4 (best - worst)
 pesttreament: bool = False
-FARMER_EMOJI: str = str("\U0000233E")
+density: int = 0 #int 1 - 4 (best - worst)
 
 def main() -> None:
     """Entrypoint into the program"""
@@ -62,7 +62,7 @@ def greet() -> None:
     global player 
     player = str(input("Player name: ")) 
     print(f"Welcome {player}!") 
-    print(f"This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer! {FARMER_EMOJI}")
+    print(f"This is ArgiLife, a farming simulation. In this game, you will be a North Carolinian farmer!")
     print("Your goal is to maximize yield and profit for the end-of-year farmer's market.")
     print(f"Depending on your decisions, your profit will change. Your initial balance to use on supplies and tools is ${balance}")
 
@@ -129,7 +129,18 @@ def allocating() -> None:
 
 def seeding() -> None:
     """seeding"""
-    print()
+    global density
+    print("Crop density is an important farming concept that measures how many plants are planted per square acre")
+    print("According to survey by MSU, the optimum crop density can range from 72,000 planter per square acre to 120,000 plants per square acre, depending on the type of plant")
+    d: int = int(input("On a scale of 1-4 with 1 being the most dense and 4 being the least dense, how dense do you want your crops to be planted: "))
+    check: bool = False
+    while check == False:
+        if 1<=d<=4:
+            density = d
+            check = True
+        else:
+            d = int(input("Please enter a number between 1-4: "))
+
 
 def watering1() -> None:
     """watering1"""
